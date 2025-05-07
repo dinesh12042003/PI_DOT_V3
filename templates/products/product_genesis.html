@@ -1,0 +1,1235 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block Style %}
+    <style>
+        :root {
+            /* Colors */
+            --primary-color: #FFB13B;
+            --primary-dark: #F69507;
+            --primary-light: #FFD08A;
+            --text-dark: #0B0B0B;
+            --text-light: #FFFFFF;
+            --text-gray: #AAAAAA;
+            --bg-light: #FFFFFF;
+            --bg-dark: #0B0B0B;
+            --card-bg: #F5F5F5;
+            
+            /* Product Colors */
+            --genesis-color: #56848C;
+            --genesis-dark: #122E32;
+            --edusphere-color: #38B6FF;
+            --edusphere-dark: #00A3FF;
+            --axiom-color: #0B0B0B;
+            --axiom-dark: #333333;
+        }
+        
+        /* Modern Base Styles with smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            margin: 0;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Container for consistent width */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        /* Dynamic Gradient Header with Parallax Effect */
+        .hero {
+            background: linear-gradient(135deg, 
+                          var(--genesis-dark) 0%, 
+                          var(--genesis-color) 50%, 
+                          var(--primary-color) 100%);
+            color: var(--text-light);
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('{% static "assets/images/corp-pattern.svg" %}') center/cover;
+            opacity: 0.1;
+            animation: patternMove 30s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        }
+        
+        .logo-container {
+            background: var(--bg-light);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .logo-container img {
+            width: 80%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .logo-container:hover img {
+            transform: scale(1.1);
+        }
+        
+        .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.3s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* PI DOT Connection Section */
+        .pidot-connection {
+            padding: 60px 0;
+            text-align: center;
+            background: var(--card-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pidot-connection img {
+            height: 50px;
+            width: auto;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .pidot-connection img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Floating Cards Section */
+        .floating-cards-section {
+            padding: 120px 0;
+            position: relative;
+            background: url('{% static "assets/images/dots-pattern.svg" %}') center/cover;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        /* Updated Card Containers */
+        .gradient-cards-container,
+        .floating-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+
+        @media (min-width: 992px) {
+            .gradient-cards-container,
+            .floating-cards-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 991px) and (min-width: 768px) {
+            .gradient-cards-container,
+            .floating-cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .floating-card {
+            width: 100%;
+            background: var(--bg-light);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(50px) rotateX(15deg);
+            animation: cardEntrance 0.8s ease forwards;
+        }
+
+        @keyframes cardEntrance {
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+
+        .floating-card:nth-child(1) { animation-delay: 0.2s; }
+        .floating-card:nth-child(2) { animation-delay: 0.4s; }
+        .floating-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .floating-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--genesis-color);
+            transition: height 0.3s ease;
+        }
+
+        .floating-card:hover {
+            transform: translateY(-20px) rotateX(5deg);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+        }
+
+        .floating-card:hover::before {
+            height: 12px;
+        }
+
+        .floating-card-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+        }
+
+        .floating-card:hover .floating-card-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* Gradient Section */
+        .gradient-section {
+            padding: 150px 0;
+            background: linear-gradient(135deg, var(--genesis-dark), var(--genesis-color));
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gradient-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('{% static "assets/images/hex-pattern.svg" %}') center/contain;
+            opacity: 0.1;
+            animation: rotate 60s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .gradient-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .gradient-card:nth-child(1) { animation-delay: 0.2s; }
+        .gradient-card:nth-child(2) { animation-delay: 0.4s; }
+        .gradient-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .gradient-card:hover {
+            transform: scale(1.03) translateY(-10px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Interactive Grid Section */
+        .interactive-grid-section {
+            padding: 120px 0;
+            background: var(--card-bg);
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .grid-item {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            height: 300px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .grid-item:nth-child(1) { animation-delay: 0.2s; }
+        .grid-item:nth-child(2) { animation-delay: 0.4s; }
+        .grid-item:nth-child(3) { animation-delay: 0.6s; }
+        .grid-item:nth-child(4) { animation-delay: 0.8s; }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .grid-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--text-light);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .grid-item:hover .grid-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Floating Number Section - Why Genesis */
+        .floating-number-section {
+            padding: 120px 0;
+            background: var(--genesis-dark);
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-number-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('{% static "assets/images/circuit-pattern.svg" %}') center/cover;
+            opacity: 0.05;
+        }
+
+        .number-card {
+            position: relative;
+            background: rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 50px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .number-card:nth-child(1) { animation-delay: 0.2s; }
+        .number-card:nth-child(2) { animation-delay: 0.4s; }
+        .number-card:nth-child(3) { animation-delay: 0.6s; }
+        .number-card:nth-child(4) { animation-delay: 0.8s; }
+        .number-card:nth-child(5) { animation-delay: 1.0s; }
+        .number-card:nth-child(6) { animation-delay: 1.2s; }
+
+        .number-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .number-card::before {
+            content: attr(data-number);
+            position: absolute;
+            top: -30px;
+            right: 20px;
+            font-size: 120px;
+            font-weight: 800;
+            color: rgba(255,255,255,0.1);
+            z-index: 0;
+            transition: all 0.4s ease;
+        }
+
+        .number-card:hover::before {
+            transform: scale(1.1);
+            opacity: 0.15;
+        }
+
+        .number-card h3 {
+            position: relative;
+            z-index: 1;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .number-card:hover h3 {
+            color: var(--primary-light);
+        }
+
+        /* Core Programs Grid */
+        .programs-section {
+            padding: 80px 0;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .edu-card {
+            background: var(--bg-light);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .edu-card:nth-child(1) { animation-delay: 0.2s; }
+        .edu-card:nth-child(2) { animation-delay: 0.4s; }
+        .edu-card:nth-child(3) { animation-delay: 0.6s; }
+        .edu-card:nth-child(4) { animation-delay: 0.8s; }
+
+        .edu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .edu-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 30px;
+            position: relative;
+        }
+
+        .card-tag {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .edu-card:hover .card-tag {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Impact Stats */
+        .stats-section {
+            background: var(--genesis-dark);
+            color: var(--text-light);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('{% static "assets/images/stats-pattern.svg" %}') center/cover;
+            opacity: 0.1;
+        }
+
+        .stat-item {
+            display: inline-block;
+            margin: 0 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.2s; }
+        .stat-item:nth-child(2) { animation-delay: 0.4s; }
+        .stat-item:nth-child(3) { animation-delay: 0.6s; }
+        .stat-item:nth-child(4) { animation-delay: 0.8s; }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover .stat-number {
+            color: var(--primary-light);
+            transform: scale(1.1);
+        }
+
+        /* Founder's Vision */
+        .founder-section {
+            padding: 100px 0;
+            {% comment %} background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('{% static "assets/images/india-map.png" %}') center/cover; {% endcomment %}
+            position: relative;
+        }
+
+        .founder-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.3s;
+        }
+
+        .founder-quote {
+            font-size: 1.4rem;
+            font-weight: 500;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .founder-quote::before,
+        .founder-quote::after {
+            content: '"';
+            font-family: serif;
+            font-size: 60px;
+            color: var(--primary-color);
+            opacity: 0.2;
+            position: absolute;
+        }
+
+        .founder-quote::before {
+            top: -30px;
+            left: -40px;
+        }
+
+        .founder-quote::after {
+            bottom: -60px;
+            right: -40px;
+        }
+
+        .founder-signature {
+            height: 50px;
+            width: auto;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .founder-signature:hover {
+            transform: scale(1.05);
+        }
+
+        /* Testimonial Carousel */
+        .testimonial-carousel {
+            background: var(--card-bg);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.3s;
+        }
+
+        .testimonial-card::before {
+            content: """;
+            font-family: serif;
+            font-size: 100px;
+            color: var(--genesis-color);
+            opacity: 0.1;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-avatar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: var(--genesis-color);
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('{% static "assets/images/cta-pattern.svg" %}') center/cover;
+            opacity: 0.1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--text-dark);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.6s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Highlight styles */
+        .highlight {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        [data-theme="light"] .highlight {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .interactive-grid,
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 80px 0 60px;
+                min-height: auto;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .gradient-card,
+            .number-card {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stat-item {
+                display: block;
+                margin: 0 auto 30px;
+                width: 100%;
+            }
+            
+            .founder-quote {
+                font-size: 1.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .interactive-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0 40px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+            }
+            
+            .floating-card,
+            .gradient-card,
+            .number-card {
+                padding: 25px;
+            }
+            
+            .card-image {
+                height: 150px;
+            }
+        }
+    </style>
+{% endblock Style %}
+
+{% block Body %}
+    <!-- Animated Gradient Hero -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="logo-container">
+                <img src="{% static 'assets/logos/Genesis.svg' %}" alt="Genesis Logo">
+            </div>
+            <h1>Bridging Academia & Industry</h1>
+            <p>
+                Corporate-led education that equips students with real-world skills through direct industry partnerships and hands-on training
+            </p>
+        </div>
+    </section>
+
+    <!-- PI DOT Connection -->
+    <section class="pidot-connection">
+        <div class="container">
+            <img src="{% static 'assets/images/pidot-logo.svg' %}" alt="PI DOT">
+            <p>
+                Genesis is PI DOT's corporate education initiative, transforming how students transition from classroom to career through direct industry integration and mentorship.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== VALUE FOR STUDENTS ===== -->
+    <section class="floating-cards-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span>Career</span> 
+                <span>Acceleration</span>
+            </h2>
+            
+            <div class="floating-cards-container">
+                <!-- Card 1 -->
+                <div class="floating-card">
+                    <div class="floating-card-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Corporate-Led Training</h3>
+                    <p>Direct mentorship and training from industry professionals with real-world case studies and projects.</p>
+                    <div class="highlight">
+                        <i class="fas fa-chart-line"></i>
+                        <span>87% placement rate in partner companies</span>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="floating-card">
+                    <div class="floating-card-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Industry Networking</h3>
+                    <p>Exclusive access to our corporate partner network for mentorship and career opportunities.</p>
+                    <div class="highlight">
+                        <i class="fas fa-chart-line"></i>
+                        <span>300+ corporate partners across industries</span>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="floating-card">
+                    <div class="floating-card-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Tailored Career Pathways</h3>
+                    <p>Customized learning journeys aligned with your career goals and industry demands.</p>
+                    <div class="highlight">
+                        <i class="fas fa-chart-line"></i>
+                        <span>40% higher starting salaries than average</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VALUE FOR BUSINESSES ===== -->
+    <section class="gradient-section">
+        <div class="container">
+            <h2 class="section-title">
+                Business <span>Partnerships</span>
+            </h2>
+            
+            <div class="gradient-cards-container">
+                <div class="gradient-card">
+                    <div>
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3>Talent Pipeline</h3>
+                    <p>Direct access to pre-trained, job-ready candidates tailored to your specific needs.</p>
+                    <div class="highlight">
+                        <i class="fas fa-award"></i>
+                        <span>60% reduction in hiring costs</span>
+                    </div>
+                </div>
+                
+                <div class="gradient-card">
+                    <div>
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Custom Training</h3>
+                    <p>Co-create curriculum to develop talent with your required skill sets.</p>
+                    <div class="highlight">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Tailored to 50+ industry verticals</span>
+                    </div>
+                </div>
+                
+                <div class="gradient-card">
+                    <div>
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>ROI Focused</h3>
+                    <p>Measurable impact on productivity and reduced employee turnover.</p>
+                    <div class="highlight">
+                        <i class="fas fa-headset"></i>
+                        <span>35% faster onboarding</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OUR SERVICES ===== -->
+    <section class="interactive-grid-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span>Corporate</span> 
+                <span>Programs</span>
+            </h2>
+            
+            <div class="interactive-grid">
+                <!-- Service 1 -->
+                <div class="grid-item">
+                    <img src="{% static 'assets/images/talent-bridge.jpg' %}" alt="Talent Bridge">
+                    <div class="grid-content">
+                        <h3>Talent Bridge</h3>
+                        <p>Final-year immersion program with direct placement opportunities</p>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="grid-item">
+                    <img src="{% static 'assets/images/leadership-conclave.jpg' %}" alt="Leadership Conclave">
+                    <div class="grid-content">
+                        <h3>Leadership Conclave</h3>
+                        <p>Early career development for first and second-year students</p>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="grid-item">
+                    <img src="{% static 'assets/images/industry-immersion.jpg' %}" alt="Industry Immersion">
+                    <div class="grid-content">
+                        <h3>Industry Immersion</h3>
+                        <p>Hands-on experience through company visits and projects</p>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="grid-item">
+                    <img src="{% static 'assets/images/genesis-ignite.jpg' %}" alt="Genesis Ignite">
+                    <div class="grid-content">
+                        <h3>Genesis Ignite</h3>
+                        <p>Entrepreneurship training for family businesses and startups</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section class="floating-number-section">
+        <div class="container">
+            <h2 class="section-title">
+                Why <span>Genesis</span>?
+            </h2>
+            
+            <div class="floating-cards-container">
+                <!-- Reason 1 -->
+                <div class="number-card" data-number="1">
+                    <h3>Industry-Aligned</h3>
+                    <p>Curriculum co-created with corporate partners to match real-world needs.</p>
+                </div>
+                
+                <!-- Reason 2 -->
+                <div class="number-card" data-number="2">
+                    <h3>Direct Placement</h3>
+                    <p>Seamless transition from training to employment with partner companies.</p>
+                </div>
+                
+                <!-- Reason 3 -->
+                <div class="number-card" data-number="3">
+                    <h3>Mentorship</h3>
+                    <p>1:1 guidance from industry professionals throughout the program.</p>
+                </div>
+                
+                <!-- Reason 4 -->
+                <div class="number-card" data-number="4">
+                    <h3>Practical Focus</h3>
+                    <p>80% of training is hands-on with real business challenges.</p>
+                </div>
+                
+                <!-- Reason 5 -->
+                <div class="number-card" data-number="5">
+                    <h3>Alumni Network</h3>
+                    <p>Lifelong access to our growing professional community.</p>
+                </div>
+                
+                <!-- Reason 6 -->
+                <div class="number-card" data-number="6">
+                    <h3>Continuous Upskilling</h3>
+                    <p>Ongoing learning opportunities even after placement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Programs Grid -->
+    <section class="programs-section container">
+        <h2 class="section-title">
+            Our <span>Flagship</span> Programs
+        </h2>
+        
+        <div class="card-grid">
+            <!-- Program 1 -->
+            <div class="edu-card">
+                <div class="card-image">
+                    <img src="{% static 'assets/images/talent-bridge-program.jpg' %}" alt="Talent Bridge Program">
+                </div>
+                <div class="card-content">
+                    <span class="card-tag">For Graduates</span>
+                    <h3>Talent Bridge</h3>
+                    <p>6-month intensive program with guaranteed interviews at partner companies upon completion.</p>
+                    <a href="#">
+                        Explore Program <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Program 2 -->
+            <div class="edu-card">
+                <div class="card-image">
+                    <img src="{% static 'assets/images/leadership-program.jpg' %}" alt="Leadership Program">
+                </div>
+                <div class="card-content">
+                    <span class="card-tag">For Undergrads</span>
+                    <h3>Leadership Conclave</h3>
+                    <p>Year-round professional development for early-career students with mentorship.</p>
+                    <a href="#">
+                        Explore Program <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Program 3 -->
+            <div class="edu-card">
+                <div class="card-image">
+                    <img src="{% static 'assets/images/immersion-program.jpg' %}" alt="Immersion Program">
+                </div>
+                <div class="card-content">
+                    <span class="card-tag">For Institutions</span>
+                    <h3>Industry Immersion</h3>
+                    <p>On-site experiences at corporate partners with project-based learning.</p>
+                    <a href="#">
+                        Explore Program <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Program 4 -->
+            <div class="edu-card">
+                <div class="card-image">
+                    <img src="{% static 'assets/images/ignite-program.jpg' %}" alt="Ignite Program">
+                </div>
+                <div class="card-content">
+                    <span class="card-tag">For Entrepreneurs</span>
+                    <h3>Genesis Ignite</h3>
+                    <p>Comprehensive training for running, scaling, and managing businesses.</p>
+                    <a href="#">
+                        Explore Program <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title">Our Proven Impact</h2>
+            
+            <div class="stat-item">
+                <div class="stat-number">300+</div>
+                <div>Corporate Partners</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">87%</div>
+                <div>Placement Rate</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div>Industry Verticals</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number">10K+</div>
+                <div>Students Trained</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder's Vision -->
+    <section class="founder-section">
+        <div class="container">
+            <div class="founder-content">
+                <img src="{% static 'assets/images/quote-icon.svg' %}" alt="">
+                <p class="founder-quote">
+                    "Genesis was created to solve the fundamental disconnect between education and employment. By bringing corporations into the learning process, we're creating a new model where every student graduates with both knowledge and opportunity."
+                </p>
+                <div>
+                    <img src="{% static 'assets/images/vamshi-signature.png' %}" alt="Signature" class="founder-signature">
+                    <p>M Vamshi Krishna</p>
+                    <p>Founder & CEO, PI DOT</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Carousel -->
+    <section class="testimonial-carousel">
+        <div class="container">
+            <div class="testimonial-card">
+                <p>
+                    "Genesis graduates join us with 6 months of relevant experience already under their belts. They hit the ground running, requiring minimal onboarding - something we rarely see with traditional hires."
+                </p>
+                <div>
+                    <img src="{% static 'assets/images/testimonial-2.jpg' %}" alt="HR Director" class="testimonial-avatar">
+                    <div>
+                        <p>Rajesh Patel</p>
+                        <p>HR Director, TechSolutions Inc.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title">Ready to Transform Careers?</h2>
+            <p>
+                Join the Genesis ecosystem as a student, institution, or corporate partner
+            </p>
+            <a href="#" class="cta-button">
+                Get Started Today
+            </a>
+        </div>
+    </section>
+{% endblock Body %}
+
+{% block Script %}
+<script>
+// Intersection Observer for scroll animations
+document.addEventListener('DOMContentLoaded', function() {
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll(
+            '.section-title, .floating-card, .gradient-card, ' +
+            '.grid-item, .number-card, .edu-card, .stat-item'
+        );
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        elements.forEach(element => {
+            element.style.animationPlayState = 'paused';
+            element.style.opacity = '0';
+            observer.observe(element);
+        });
+    };
+    
+    // Smooth scroll for anchor links
+    const setupSmoothScroll = function() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update URL without jumping
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    } else {
+                        location.hash = targetId;
+                    }
+                }
+            });
+        });
+    };
+    
+    // Card hover effects
+    const setupCardHoverEffects = function() {
+        const cards = document.querySelectorAll('.floating-card, .gradient-card, .number-card, .edu-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+    };
+    
+    // Initialize all functions
+    animateOnScroll();
+    setupSmoothScroll();
+    setupCardHoverEffects();
+    
+    // Optional: Add resize observer for responsive adjustments
+    const resizeObserver = new ResizeObserver(entries => {
+        // You could add responsive JS logic here if needed
+    });
+    resizeObserver.observe(document.body);
+});
+</script>
+{% endblock Script %}
