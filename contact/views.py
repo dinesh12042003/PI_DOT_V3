@@ -2,13 +2,13 @@ from django.shortcuts import render
 
 # Create your views here.
 def contact(request):
-    return render(request, 'contact.html')
+    return render(request, 'contact\contact.html')
 
 def cookie_policy(request):
-    return render(request, 'cookie_policy.html')
+    return render(request, 'contact\cookie_policy.html')
 
 def terms_coditions(request):
-    return render(request, 'terms_coditions.html')
+    return render(request, 'contact\terms_coditions.html')
 
 def privacy_policy(request):
-    return render(request, 'privacy_policy.html')
+    return render(request, 'contact\privacy_policy.html')
