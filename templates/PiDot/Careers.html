@@ -75,19 +75,19 @@
 
             <div class="gallery-grid">
                 <div class="gallery-item animate-on-scroll">
-                    <img src="assets/images/culture1.jpg" alt="Team Meeting">
+                    <img src="{% static 'images\Life_at_PiDot\TeamMeeting.jpeg' %}" alt="Team Meeting">
                     <div class="gallery-caption">Collaborative Workspaces</div>
                 </div>
                 <div class="gallery-item animate-on-scroll">
-                    <img src="assets/images/culture2.jpg" alt="Team Event">
+                    <img src="{% static 'images\Life_at_PiDot\TeamMeeting.jpeg' %}" alt="Team Event">
                     <div class="gallery-caption">Team Building Events</div>
                 </div>
                 <div class="gallery-item animate-on-scroll">
-                    <img src="assets/images/culture3.jpg" alt="Learning Session">
+                    <img src="{% static 'images\Life_at_PiDot\Learning.jpeg' %}" alt="Learning Session">
                     <div class="gallery-caption">Continuous Learning</div>
                 </div>
                 <div class="gallery-item animate-on-scroll">
-                    <img src="assets/images/culture4.jpg" alt="Celebration">
+                    <img src="{% static 'images\Life_at_PiDot\TeamMeeting.jpeg' %}" alt="Celebration">
                     <div class="gallery-caption">Celebrating Success</div>
                 </div>
             </div>
@@ -154,6 +154,36 @@
                         <a href="{% url 'PiDot_careers_register'%}" class="apply-button">Apply Now</a>
                     </div>
                 </div>
+
+                <div class="position-card animate-on-scroll" data-department="technology" data-location="hyderabad">
+                    <div class="position-info">
+                        <h3>Product Development Intern</h3>
+                        <div class="position-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Hyderabad</span>
+                            <span><i class="fas fa-briefcase"></i> B.Tech</span>
+                            <span><i class="fas fa-clock"></i> Full-time</span>
+                        </div>
+                    </div>
+                    <div class="position-actions" >
+                        <a href="position-detail.html" class="view-button">View Details</a>
+                        <a href="{% url 'PiDot_careers_register'%}" class="apply-button">Apply Now</a>
+                    </div>
+                </div>
+
+                <div class="position-card animate-on-scroll" data-department="technology" data-location="hyderabad">
+                    <div class="position-info">
+                        <h3>HR Intern</h3>
+                        <div class="position-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Hyderabad</span>
+                            <span><i class="fas fa-briefcase"></i> B.Tech</span>
+                            <span><i class="fas fa-clock"></i> Full-time</span>
+                        </div>
+                    </div>
+                    <div class="position-actions" >
+                        <a href="{% url 'careers_HR_Intern'%}" class="view-button">View Details</a>
+                        <a href="{% url 'PiDot_careers_register'%}" class="apply-button">Apply Now</a>
+                    </div>
+                </div>
                 <!-- Additional position cards -->
             </div>
         </div>
@@ -174,8 +204,8 @@
                     </ul>
                     <a href="#" class="cta-button primary">Learn About Internships</a>
                 </div>
-                <div class="program-image animate-on-scroll">
-                    <img src="assets/images/internship-program.jpg" alt="Internship Program">
+                <div class="program-image animate-on-scroll" style="display: flex; justify-content: center; align-items: center;">
+                    <img src="{% static "images\banners\Internship_Program.jpg" %}" width="450px"  alt="Internship Program">
                 </div>
             </div>
         </div>

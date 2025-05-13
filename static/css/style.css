@@ -103,6 +103,7 @@
     background-color: var(--primary-color);
     color: var(--text-dark);
   }
+
   
   .cta-button.primary:hover {
     background-color: var(--primary-dark);
@@ -156,6 +157,7 @@
     align-items: center;
   }
   
+
   .logo img {
     height: auto;
     transition: all 0.3s ease;
@@ -375,7 +377,7 @@
   }
   
   /* Trusted By Section */
-  .trusted-by {
+  /* .trusted-by {
     padding: 2rem 0;
     background-color: var(--card-bg);
   }
@@ -384,9 +386,9 @@
     text-align: center;
     margin-bottom: 1.5rem;
     color: var(--text-gray);
-    font-size: 0.9rem;
+    font-size: 0.9rem; */
     /* text-transform: uppercase; */
-    letter-spacing: 1px;
+    /* letter-spacing: 1px;
   }
   
   .logo-grid {
@@ -407,7 +409,7 @@
   .logo-grid img:hover {
     opacity: 1;
     filter: grayscale(0%);
-  }
+  } */
   
   /* Solutions Overview */
   .solutions-overview {
@@ -471,6 +473,7 @@
     padding: var(--section-padding);
     background-color: var(--primary-color);
     color: var(--text-dark);
+
   }
   
   .stats-grid {
@@ -478,9 +481,17 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
   }
+
+
   
   .stat-item {
     text-align: center;
+  }
+
+  body > section.stats-section > div > h2{
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    /* color: white; */
   }
   
   .stat-number {
@@ -491,7 +502,7 @@
   
   .stat-label {
     font-size: 1.1rem;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: 1px;
   }
   
@@ -659,6 +670,9 @@
     gap: 15px;
     margin-top: 2rem;
   }
+
+
+
   
   /* Latest Insights */
   .latest-insights {
@@ -678,6 +692,9 @@
     overflow: hidden;
     box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
   
   .insight-card:hover {
@@ -710,6 +727,9 @@
   
   .insight-content {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
   
   .insight-content h3 {
@@ -732,6 +752,8 @@
     align-items: center;
     font-size: 0.9rem;
     color: var(--text-gray);
+     margin-top: auto;
+    
   }
   
   .read-more {
@@ -782,6 +804,8 @@
     border-radius: 30px 0 0 30px;
     font-family: 'Poppins', sans-serif;
   }
+  
+
   
   .newsletter-form button {
     padding: 0 25px;
@@ -1000,6 +1024,16 @@
       align-items: center;
     }
   }
+
+
+body > section.cta-section > div > div > div > a.cta-button.primary{
+  border: 2px solid var(--primary-color);
+}
+
+
+body > section.cta-section > div > div > div > a.cta-button.primary:hover {
+  background-color: var(--primary-dark);
+}
 
 
 
@@ -1256,7 +1290,7 @@
  Leadership Page Styles
  ============================================== */
 .leadership-hero {
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/images/leadership-hero.jpg');
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/banners/Pi_banner.png');
   background-size: cover;
   background-position: center;
   color: var(--text-light);
@@ -1421,7 +1455,7 @@
  Careers Page Styles
  ============================================== */
 .careers-hero {
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/images/careers-hero.jpg');
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/banners/Pi_banner.png');
   background-size: cover;
   background-position: center;
   color: var(--text-light);
@@ -1709,7 +1743,7 @@
  Newsroom Page Styles
  ============================================== */
 .newsroom-hero {
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/images/newsroom-hero.jpg');
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/banners/Pi_banner.png');
   background-size: cover;
   background-position: center;
   color: var(--text-light);
@@ -2036,4 +2070,10 @@
   .principles {
       grid-template-columns: 1fr;
   }
+}
+
+
+
+.solution-icon img{
+  width: 50%;
 }

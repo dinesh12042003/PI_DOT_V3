@@ -50,10 +50,11 @@
 
         /* Dynamic Gradient Header with Parallax Effect */
         .hero {
-            background: linear-gradient(135deg, 
+            /* background: linear-gradient(135deg, 
                           var(--genesis-dark) 0%, 
                           var(--genesis-color) 50%, 
-                          var(--primary-color) 100%);
+                          var(--primary-color) 100%); */
+            background-color: var(--genesis-dark);
             color: var(--text-light);
             padding: 120px 0 80px;
             text-align: center;
@@ -223,7 +224,7 @@
             left: 0;
             width: 100%;
             height: 8px;
-            background: var(--genesis-color);
+            background: var(--genesis-dark);
             transition: height 0.3s ease;
         }
 
@@ -244,19 +245,20 @@
         }
 
         .floating-card:hover .floating-card-icon {
-            transform: scale(1.2) rotate(10deg);
+            transform: scale(1.1) rotate(0deg);
         }
 
         /* Gradient Section */
         .gradient-section {
             padding: 150px 0;
-            background: linear-gradient(135deg, var(--genesis-dark), var(--genesis-color));
+            /* background: linear-gradient(135deg, var(--genesis-dark), var(--genesis-color)); */
+            background-color: var(--genesis-dark);
             color: var(--text-light);
             position: relative;
             overflow: hidden;
         }
 
-        .gradient-section::before {
+        /* .gradient-section::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -266,7 +268,7 @@
             background: url('{% static "assets/images/hex-pattern.svg" %}') center/contain;
             opacity: 0.1;
             animation: rotate 60s linear infinite;
-        }
+        } */
 
         @keyframes rotate {
             0% { transform: rotate(0deg); }
@@ -507,8 +509,8 @@
 
         /* Impact Stats */
         .stats-section {
-            background: var(--genesis-dark);
-            color: var(--text-light);
+            background: var(--card-bg);
+            color: var(--text-dark);
             padding: 80px 0;
             text-align: center;
             position: relative;
@@ -555,7 +557,8 @@
         /* Founder's Vision */
         .founder-section {
             padding: 100px 0;
-            {% comment %} background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('{% static "assets/images/india-map.png" %}') center/cover; {% endcomment %}
+            /* background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://cdn2.vectorstock.com/i/1000x1000/77/06/india-map-glowing-silhouette-outline-made-vector-44557706.jpg') center/cover;
+            background-attachment: fixed; */
             position: relative;
         }
 
@@ -627,7 +630,7 @@
         }
 
         .testimonial-card::before {
-            content: """;
+            content: "";
             font-family: serif;
             font-size: 100px;
             color: var(--genesis-color);
@@ -654,7 +657,7 @@
         .cta-section {
             padding: 100px 0;
             text-align: center;
-            background: var(--genesis-color);
+            background: var(--genesis-dark);
             color: var(--text-light);
             position: relative;
             overflow: hidden;
@@ -796,7 +799,7 @@
             </div>
             <h1>Bridging Academia & Industry</h1>
             <p>
-                Corporate-led education that equips students with real-world skills through direct industry partnerships and hands-on training
+                Corporate-led education platform designed to provide job-ready talent to companies
             </p>
         </div>
     </section>
@@ -910,7 +913,7 @@
     </section>
 
     <!-- ===== OUR SERVICES ===== -->
-    <section class="interactive-grid-section">
+    {% comment %} <section class="interactive-grid-section">
         <div class="container">
             <h2 class="section-title">
                 <span>Corporate</span> 
@@ -955,54 +958,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- ===== WHY CHOOSE US ===== -->
-    <section class="floating-number-section">
-        <div class="container">
-            <h2 class="section-title">
-                Why <span>Genesis</span>?
-            </h2>
-            
-            <div class="floating-cards-container">
-                <!-- Reason 1 -->
-                <div class="number-card" data-number="1">
-                    <h3>Industry-Aligned</h3>
-                    <p>Curriculum co-created with corporate partners to match real-world needs.</p>
-                </div>
-                
-                <!-- Reason 2 -->
-                <div class="number-card" data-number="2">
-                    <h3>Direct Placement</h3>
-                    <p>Seamless transition from training to employment with partner companies.</p>
-                </div>
-                
-                <!-- Reason 3 -->
-                <div class="number-card" data-number="3">
-                    <h3>Mentorship</h3>
-                    <p>1:1 guidance from industry professionals throughout the program.</p>
-                </div>
-                
-                <!-- Reason 4 -->
-                <div class="number-card" data-number="4">
-                    <h3>Practical Focus</h3>
-                    <p>80% of training is hands-on with real business challenges.</p>
-                </div>
-                
-                <!-- Reason 5 -->
-                <div class="number-card" data-number="5">
-                    <h3>Alumni Network</h3>
-                    <p>Lifelong access to our growing professional community.</p>
-                </div>
-                
-                <!-- Reason 6 -->
-                <div class="number-card" data-number="6">
-                    <h3>Continuous Upskilling</h3>
-                    <p>Ongoing learning opportunities even after placement.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </section> {% endcomment %}
 
     <!-- Core Programs Grid -->
     <section class="programs-section container">
@@ -1072,6 +1028,55 @@
             </div>
         </div>
     </section>
+
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section class="floating-number-section">
+        <div class="container">
+            <h2 class="section-title">
+                Value for <span>Corporates</span>
+            </h2>
+            
+            <div class="floating-cards-container">
+                <!-- Reason 1 -->
+                <div class="number-card" data-number="1">
+                    <h3>Job-Ready Talent</h3>
+                    <p>Curriculum co-created with corporate partners to match real-world needs.</p>
+                </div>
+                
+                <!-- Reason 2 -->
+                <div class="number-card" data-number="2">
+                    <h3>Direct Placement</h3>
+                    <p>Seamless transition from training to employment with partner companies.</p>
+                </div>
+                
+                <!-- Reason 3 -->
+                <div class="number-card" data-number="3">
+                    <h3>Mentorship</h3>
+                    <p>1:1 guidance from industry professionals throughout the program.</p>
+                </div>
+                
+                <!-- Reason 4 -->
+                <div class="number-card" data-number="4">
+                    <h3>Practical Focus</h3>
+                    <p>80% of training is hands-on with real business challenges.</p>
+                </div>
+                
+                <!-- Reason 5 -->
+                <div class="number-card" data-number="5">
+                    <h3>Alumni Network</h3>
+                    <p>Lifelong access to our growing professional community.</p>
+                </div>
+                
+                <!-- Reason 6 -->
+                <div class="number-card" data-number="6">
+                    <h3>Continuous Upskilling</h3>
+                    <p>Ongoing learning opportunities even after placement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
 
     <!-- Impact Stats -->
     <section class="stats-section">

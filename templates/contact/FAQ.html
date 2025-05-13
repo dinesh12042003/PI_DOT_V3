@@ -1,0 +1,532 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block Style %}
+<style>
+    /* FAQ Page Styles */
+    .faq-hero {
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+        color: var(--text-light);
+        padding: 120px 0 80px;
+        text-align: center;
+        position: relative;
+    }
+
+    .faq-hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .faq-hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .faq-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 20px;
+    }
+
+    .faq-tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .faq-tab {
+        padding: 12px 24px;
+        background: var(--card-bg);
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .faq-tab:hover {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .faq-tab.active {
+        background: var(--primary-dark);
+        color: white;
+        border-color: var(--primary-light);
+    }
+
+    .faq-category {
+        margin-bottom: 60px;
+    }
+
+    .faq-category h2 {
+        color: var(--primary-dark);
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    .faq-item {
+        background: var(--bg-light);
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .faq-question {
+        padding: 20px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--bg-dark);
+    }
+
+    .faq-question:hover {
+        background:rgba(246, 150, 7, 0.08)
+    }
+
+    .faq-question::after {
+        content: '+';
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question::after {
+        content: '-';
+    }
+
+    .faq-answer {
+        padding: 0 25px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+        padding: 0 25px 20px;
+        max-height: 500px;
+    }
+
+    .faq-answer p {
+        margin-bottom: 15px;
+    }
+
+    .faq-answer ul {
+        padding-left: 20px;
+        margin-bottom: 15px;
+    }
+
+    .faq-answer li {
+        margin-bottom: 8px;
+    }
+
+    .search-container {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        position: relative;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 15px 20px;
+        border: 2px solid #ddd;
+        border-radius: 50px;
+        font-size: 1rem;
+        padding-right: 50px;
+    }
+
+    .search-icon {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary-color);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .faq-hero h1 {
+            font-size: 2.2rem;
+        }
+        
+        .faq-tabs {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .faq-tab {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+{% endblock Style %}
+
+{% block Body %}
+    <!-- FAQ Hero -->
+    <section class="faq-hero">
+        <div class="container">
+            <div class="faq-hero-content">
+                <h1>PI DOT FAQs</h1>
+                <p>Find answers to common questions about our products, services, and initiatives</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Main Content -->
+    <section class="faq-container">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search FAQs...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <div class="faq-tabs">
+            <div class="faq-tab active" data-tab="all">All FAQs</div>
+            <div class="faq-tab" data-tab="general">General</div>
+            <div class="faq-tab" data-tab="edusphere">Edusphere</div>
+            <div class="faq-tab" data-tab="genesis">Genesis</div>
+            <div class="faq-tab" data-tab="other">Other Services</div>
+        </div>
+
+        <!-- General PI DOT FAQs -->
+        <div class="faq-category" data-category="general">
+            <h2>General PI DOT Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is PI DOT's mission and vision?
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Our Mission:</strong> Changing how India consumes knowledge and trains talent.</p>
+                    <p><strong>Our Vision:</strong> To introduce the cofactor of luck in the form of opportunities, security, and optimization to unlock humankind's ultimate potential.</p>
+                    <p>We aim to empower, elevate, and accelerate people, businesses, communities, and ecosystems through our various initiatives.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Who is the founder of PI DOT?
+                </div>
+                <div class="faq-answer">
+                    <p>PI DOT was founded by M Vamshi Krishna, who believes that opportunities, lifestyle, and experiences are often limited by the amount of "luck" individuals have. PI DOT was created to bring this cofactor of luck to 314 million Indians, transforming how India consumes knowledge, trains talent, and builds communities.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How can I partner with PI DOT?
+                </div>
+                <div class="faq-answer">
+                    <p>We welcome partnerships with organizations that align with our vision. There are several ways to partner with us:</p>
+                    <ul>
+                        <li><strong>Educational Institutions:</strong> Implement our Edusphere programs</li>
+                        <li><strong>Corporations:</strong> Collaborate with our Genesis initiative</li>
+                        <li><strong>Community Organizations:</strong> Work with us on ecosystem development</li>
+                        <li><strong>Investors:</strong> Support our growth and expansion</li>
+                    </ul>
+                    <p>Please visit our Contact page to get in touch with our partnership team.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edusphere FAQs -->
+        <div class="faq-category" data-category="edusphere">
+            <h2>Edusphere Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is Edusphere and who is it for?
+                </div>
+                <div class="faq-answer">
+                    <p>Edusphere is PI DOT's educational initiative that blends education, technology, and psychology to make experiential learning a reality for global relevance, primarily focused on children.</p>
+                    <p>It is designed for:</p>
+                    <ul>
+                        <li>Students from kindergarten through 12th grade</li>
+                        <li>Educational institutions looking to enhance their curriculum</li>
+                        <li>Teachers seeking professional development</li>
+                        <li>Parents wanting global-standard education for their children</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How does Edusphere integrate with existing school curricula?
+                </div>
+                <div class="faq-answer">
+                    <p>Edusphere programs are designed to complement and enhance existing school curricula with minimal disruption:</p>
+                    <ul>
+                        <li><strong>Flexible Implementation:</strong> Programs can be integrated as after-school activities or within the regular timetable</li>
+                        <li><strong>Curriculum Alignment:</strong> Our content aligns with and enhances standard learning objectives</li>
+                        <li><strong>Teacher Support:</strong> We provide comprehensive training and resources for seamless implementation</li>
+                        <li><strong>Assessment Tools:</strong> Integrated evaluation methods to measure impact without adding administrative burden</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the exclusivity policy within a 5km radius?
+                </div>
+                <div class="faq-answer">
+                    <p>To ensure our partner schools maintain a competitive advantage, we limit our partnerships to one school within a 5km radius. This policy:</p>
+                    <ul>
+                        <li>Maintains the uniqueness of our programs for your institution</li>
+                        <li>Prevents market saturation in your area</li>
+                        <li>Ensures dedicated support and resources for your school</li>
+                        <li>Creates a distinctive value proposition for parents in your community</li>
+                    </ul>
+                    <p>Exceptions may be made for schools serving significantly different demographics within the same area.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Genesis FAQs -->
+        <div class="faq-category" data-category="genesis">
+            <h2>Genesis Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the Genesis program?
+                </div>
+                <div class="faq-answer">
+                    <p>Genesis is PI DOT's corporate education initiative that bridges academia and industry through:</p>
+                    <ul>
+                        <li><strong>Corporate-Led Training:</strong> Direct mentorship from industry professionals</li>
+                        <li><strong>Industry Networking:</strong> Access to our corporate partner network</li>
+                        <li><strong>Tailored Career Pathways:</strong> Customized learning aligned with career goals</li>
+                        <li><strong>Direct Placement:</strong> Opportunities with partner companies</li>
+                    </ul>
+                    <p>The program transforms how students transition from classroom to career through direct industry integration.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How does Genesis benefit corporate partners?
+                </div>
+                <div class="faq-answer">
+                    <p>Corporate partners gain significant advantages through Genesis:</p>
+                    <ul>
+                        <li><strong>Talent Pipeline:</strong> Access to pre-trained, job-ready candidates (60% reduction in hiring costs)</li>
+                        <li><strong>Custom Training:</strong> Co-create curriculum for your specific skill needs</li>
+                        <li><strong>ROI Focused:</strong> Measurable impact on productivity (35% faster onboarding)</li>
+                        <li><strong>Brand Visibility:</strong> Association with innovative education-to-employment solutions</li>
+                        <li><strong>Community Impact:</strong> Demonstrable commitment to education and skill development</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the success rate of Genesis placements?
+                </div>
+                <div class="faq-answer">
+                    <p>Genesis has demonstrated strong placement outcomes:</p>
+                    <ul>
+                        <li><strong>87% placement rate</strong> in partner companies</li>
+                        <li><strong>40% higher starting salaries</strong> than industry averages</li>
+                        <li><strong>300+ corporate partners</strong> across multiple industries</li>
+                        <li><strong>10,000+ students trained</strong> since inception</li>
+                    </ul>
+                    <p>These metrics are regularly audited and verified by our impact assessment team.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Services FAQs -->
+        <div class="faq-category" data-category="other">
+            <h2>Other PI DOT Services</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What other services does PI DOT offer?
+                </div>
+                <div class="faq-answer">
+                    <p>Beyond Edusphere and Genesis, PI DOT offers several ecosystem services:</p>
+                    <ul>
+                        <li><strong>Community Development Programs:</strong> Building sustainable local ecosystems</li>
+                        <li><strong>Entrepreneurship Initiatives:</strong> Supporting startups and family businesses</li>
+                        <li><strong>Skill Development:</strong> Vocational and professional training programs</li>
+                        <li><strong>Research & Innovation:</strong> Educational technology development</li>
+                        <li><strong>Consulting Services:</strong> For institutions and corporations</li>
+                    </ul>
+                    <p>Our services continually evolve to meet emerging needs in education and workforce development.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How does PI DOT measure the impact of its programs?
+                </div>
+                <div class="faq-answer">
+                    <p>We employ a rigorous impact measurement framework:</p>
+                    <ul>
+                        <li><strong>Quantitative Metrics:</strong> Placement rates, salary increases, skill acquisition levels</li>
+                        <li><strong>Qualitative Assessments:</strong> Participant feedback, employer satisfaction</li>
+                        <li><strong>Longitudinal Studies:</strong> Tracking career progression over time</li>
+                        <li><strong>Third-Party Audits:</strong> Independent verification of outcomes</li>
+                        <li><strong>Ecosystem Impact:</strong> Community development indicators</li>
+                    </ul>
+                    <p>All programs include built-in assessment mechanisms and continuous improvement processes.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is PI DOT planning to expand to other countries?
+                </div>
+                <div class="faq-answer">
+                    <p>While our primary focus remains on transforming education and employment ecosystems in India, we are exploring:</p>
+                    <ul>
+                        <li><strong>Regional Expansion:</strong> To underserved areas within India</li>
+                        <li><strong>Global Partnerships:</strong> With international educational institutions</li>
+                        <li><strong>Technology Scaling:</strong> Making our solutions available digitally worldwide</li>
+                        <li><strong>Knowledge Exchange:</strong> Collaborating with global education innovators</li>
+                    </ul>
+                    <p>Any international expansion will maintain our core commitment to quality and impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock Body %}
+
+{% block Script %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // FAQ Accordion Functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Toggle current item
+                item.classList.toggle('active');
+                
+                // Close other items in the same category when opening this one
+                if (item.classList.contains('active')) {
+                    const category = item.closest('.faq-category');
+                    category.querySelectorAll('.faq-item').forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Tab Filtering Functionality - Fixed Version
+        const tabs = document.querySelectorAll('.faq-tab');
+        const categories = document.querySelectorAll('.faq-category');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const filter = tab.dataset.tab;
+                
+                // Show/hide categories based on filter
+                categories.forEach(category => {
+                    const categoryType = category.dataset.category;
+                    
+                    if (filter === 'all' || categoryType === filter) {
+                        category.style.display = 'block';
+                        
+                        // Show all questions in this category
+                        category.querySelectorAll('.faq-item').forEach(item => {
+                            item.style.display = 'block';
+                        });
+                    } else {
+                        category.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Search Functionality
+        const searchInput = document.querySelector('.search-input');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            
+            // Reset all filters first
+            tabs.forEach(t => t.classList.remove('active'));
+            document.querySelector('.faq-tab[data-tab="all"]').classList.add('active');
+            categories.forEach(category => {
+                category.style.display = 'block';
+            });
+            
+            if (searchTerm.length < 2) {
+                // Show all if search term is too short
+                faqItems.forEach(item => {
+                    item.style.display = 'block';
+                    item.classList.remove('active');
+                });
+                return;
+            }
+            
+            let hasMatches = false;
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    item.classList.add('active'); // Open matching questions
+                    hasMatches = true;
+                    
+                    // Ensure parent category is visible
+                    item.closest('.faq-category').style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Hide categories with no visible questions
+            if (searchTerm.length >= 2) {
+                categories.forEach(category => {
+                    const visibleItems = category.querySelectorAll('.faq-item[style="display: block;"]').length;
+                    if (visibleItems === 0) {
+                        category.style.display = 'none';
+                    }
+                });
+            }
+        });
+
+        // Scroll animation for categories
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        categories.forEach(category => {
+            category.style.opacity = 0;
+            category.style.transform = 'translateY(20px)';
+            category.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(category);
+        });
+    });
+</script>
+
+{% endblock Script %}

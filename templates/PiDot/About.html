@@ -25,7 +25,7 @@
     </section>
 
     <!-- Our Story Section -->
-    <section class="our-story">
+    <!-- <section class="our-story">
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <h2>Our Story</h2>
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Mission & Vision -->
     <section class="mission-vision">
@@ -133,7 +133,7 @@
         <div class="container">
             <div class="founder-content">
                 <div class="founder-image animate-on-scroll">
-                    <img src="{% static "assets\images\team\Vamshi.jpg" %}" alt="M Vamshi Krishna">
+                    <img src="{% static "images\team\Vamshi-c.jpg" %}" alt="M Vamshi Krishna">
                 </div>
                 <div class="founder-text animate-on-scroll">
                     <h2>Message From Our Founder</h2>
@@ -189,7 +189,7 @@
             <div class="team-grid">
                 <div class="team-member animate-on-scroll">
                     <div class="member-image">
-                        <img src="{% static "assets\images\team\Dinesh_img.JPG" %}" alt="Leadership Team">
+                        <img src="{% static "images\team\Dinesh_img.JPG" %}" alt="Leadership Team">
                     </div>
                     <div class="member-info">
                         <h3>Dinesh Paridala</h3>
@@ -198,7 +198,7 @@
                 </div>
                 <div class="team-member animate-on-scroll">
                     <div class="member-image">
-                        <img src="{% static "assets\images\team\Laasya.jpeg" %}" alt="Leadership Team">
+                        <img src="{% static "images\team\Laasya.jpeg" %}" alt="Leadership Team">
                     </div>
                     <div class="member-info">
                         <h3>Laasya Vellamayina</h3>
@@ -207,7 +207,7 @@
                 </div>
                 <div class="team-member animate-on-scroll">
                     <div class="member-image">
-                        <img src="{% static "assets\images\team\Praneeth.JPG" %}" alt="Leadership Team">
+                        <img src="{% static "images\team\praneeth.png" %}" alt="Leadership Team">
                     </div>
                     <div class="member-info">
                         <h3>Prannet Pathrudu</h3>
@@ -229,8 +229,8 @@
                 <h2>Join Our Mission</h2>
                 <p>Whether you're looking to partner with us or join our team, we'd love to hear from you</p>
                 <div class="cta-buttons">
-                    <a href="contact.html" class="cta-button primary">Get in Touch</a>
-                    <a href="careers.html" class="cta-button secondary">Explore Careers</a>
+                    <a href="{% url 'contact'%}" class="cta-button primary">Get in Touch</a>
+                    <a href="{% url 'PiDot_careers'%}" class="cta-button secondary">Explore Careers</a>
                 </div>
             </div>
         </div>

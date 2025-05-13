@@ -158,34 +158,37 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function initCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    const speed = 200;
-    
-    function animateCounters() {
-      counters.forEach(counter => {
-        const target = +counter.getAttribute('data-count');
-        const count = +counter.innerText;
-        const increment = target / speed;
-        
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(animateCounters, 1);
-        } else {
-          counter.innerText = target;
-        }
-      });
-    }
-    
-    // Start counting when stats section is in view
-    const statsSection = document.querySelector('.stats-section');
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        animateCounters();
-        observer.unobserve(statsSection);
+  const counters = document.querySelectorAll('.stat-number');
+
+  const animateCounter = (counter) => {
+    const target = +counter.getAttribute('data-count');
+    let count = 0;
+
+    const step = () => {
+      const increment = Math.max(1, Math.ceil(target / 100)); // Adjustable for speed
+      count += increment;
+
+      if (count < target) {
+        counter.innerText = count;
+        requestAnimationFrame(step);
+      } else {
+        counter.innerText = target;
       }
-    });
-    
-    if (statsSection) {
-      observer.observe(statsSection);
+    };
+
+    step();
+  };
+
+  // Start counting when stats section is in view
+  const statsSection = document.querySelector('.stats-section');
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      counters.forEach(counter => animateCounter(counter));
+      observer.unobserve(statsSection);
     }
+  });
+
+  if (statsSection) {
+    observer.observe(statsSection);
   }
+}

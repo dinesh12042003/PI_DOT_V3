@@ -48,10 +48,11 @@
 
         /* Dynamic Gradient Header with Parallax Effect */
         .hero {
-            background: linear-gradient(135deg, 
+            /* background: linear-gradient(135deg, 
                           var(--edusphere-dark) 0%, 
                           var(--edusphere-color) 50%, 
-                          var(--primary-color) 100%);
+                          var(--primary-color) 100%); */
+            background-color: var(--edusphere-dark);
             color: var(--text-light);
             padding: 120px 0 80px;
             text-align: center;
@@ -152,8 +153,16 @@
         .floating-cards-section {
             padding: 120px 0;
             position: relative;
-            background: url('{% static "assets/images/dots-pattern.svg" %}') center/cover;
+            /* background: url('{% static "images\banners\cccoil.svg" %}') center/cover; */
+            background-color: var(--bg-light); 
+            /* background-color: var(--bg-light); */
+            /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='234' height='234' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23F69507' stroke-width='2.3'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23FFD08A'%3E%3Ccircle cx='769' cy='229' r='9'/%3E%3Ccircle cx='539' cy='269' r='9'/%3E%3Ccircle cx='603' cy='493' r='9'/%3E%3Ccircle cx='731' cy='737' r='9'/%3E%3Ccircle cx='520' cy='660' r='9'/%3E%3Ccircle cx='309' cy='538' r='9'/%3E%3Ccircle cx='295' cy='764' r='9'/%3E%3Ccircle cx='40' cy='599' r='9'/%3E%3Ccircle cx='102' cy='382' r='9'/%3E%3Ccircle cx='127' cy='80' r='9'/%3E%3Ccircle cx='370' cy='105' r='9'/%3E%3Ccircle cx='578' cy='42' r='9'/%3E%3Ccircle cx='237' cy='261' r='9'/%3E%3Ccircle cx='390' cy='382' r='9'/%3E%3C/g%3E%3C/svg%3E"); */
+            /* background-attachment: fixed; */
+            /* background-size: cover; */
+            
+            
         }
+        
 
         .section-title {
             text-align: center;
@@ -162,6 +171,7 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 1s ease forwards;
+        
         }
 
         /* Updated Card Containers */
@@ -221,7 +231,7 @@
             left: 0;
             width: 100%;
             height: 8px;
-            background: var(--edusphere-color);
+            background: var(--edusphere-dark);
             transition: height 0.3s ease;
         }
 
@@ -242,19 +252,24 @@
         }
 
         .floating-card:hover .floating-card-icon {
-            transform: scale(1.2) rotate(10deg);
+            transform: scale(1.1) rotate(0deg);
         }
+
+        /* .floating-card:hover .floating-card-icon {
+            transform: scale(1.2) rotate(10deg);
+        } */
 
         /* Gradient Section */
         .gradient-section {
             padding: 150px 0;
-            background: linear-gradient(135deg, var(--edusphere-dark), var(--edusphere-color));
+            /* background: linear-gradient(135deg, var(--edusphere-dark), var(--edusphere-color)); */
+            background-color: var(--edusphere-dark);
             color: var(--text-light);
             position: relative;
             overflow: hidden;
         }
 
-        .gradient-section::before {
+        /* .gradient-section::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -264,7 +279,7 @@
             background: url('{% static "assets/images/hex-pattern.svg" %}') center/contain;
             opacity: 0.1;
             animation: rotate 60s linear infinite;
-        }
+        } */
 
         @keyframes rotate {
             0% { transform: rotate(0deg); }
@@ -297,6 +312,10 @@
         .interactive-grid-section {
             padding: 120px 0;
             background: var(--card-bg);
+            /* background-color: #001F3F; */
+/* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Cdefs%3E%3Crect stroke='%23001F3F' stroke-width='0.3' width='1' height='1' id='s'/%3E%3Cpattern id='a' width='3' height='3' patternUnits='userSpaceOnUse' patternTransform='rotate(72 1000 750) scale(32.3) translate(-969.04 -726.78)'%3E%3Cuse fill='%23242f48' href='%23s' y='2'/%3E%3Cuse fill='%23242f48' href='%23s' x='1' y='2'/%3E%3Cuse fill='%23333b50' href='%23s' x='2' y='2'/%3E%3Cuse fill='%23333b50' href='%23s'/%3E%3Cuse fill='%233e4557' href='%23s' x='2'/%3E%3Cuse fill='%233e4557' href='%23s' x='1' y='1'/%3E%3C/pattern%3E%3Cpattern id='b' width='7' height='11' patternUnits='userSpaceOnUse' patternTransform='rotate(72 1000 750) scale(32.3) translate(-969.04 -726.78)'%3E%3Cg fill='%23484e5e'%3E%3Cuse href='%23s'/%3E%3Cuse href='%23s' y='5' /%3E%3Cuse href='%23s' x='1' y='10'/%3E%3Cuse href='%23s' x='2' y='1'/%3E%3Cuse href='%23s' x='2' y='4'/%3E%3Cuse href='%23s' x='3' y='8'/%3E%3Cuse href='%23s' x='4' y='3'/%3E%3Cuse href='%23s' x='4' y='7'/%3E%3Cuse href='%23s' x='5' y='2'/%3E%3Cuse href='%23s' x='5' y='6'/%3E%3Cuse href='%23s' x='6' y='9'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='h' width='5' height='13' patternUnits='userSpaceOnUse' patternTransform='rotate(72 1000 750) scale(32.3) translate(-969.04 -726.78)'%3E%3Cg fill='%23484e5e'%3E%3Cuse href='%23s' y='5'/%3E%3Cuse href='%23s' y='8'/%3E%3Cuse href='%23s' x='1' y='1'/%3E%3Cuse href='%23s' x='1' y='9'/%3E%3Cuse href='%23s' x='1' y='12'/%3E%3Cuse href='%23s' x='2'/%3E%3Cuse href='%23s' x='2' y='4'/%3E%3Cuse href='%23s' x='3' y='2'/%3E%3Cuse href='%23s' x='3' y='6'/%3E%3Cuse href='%23s' x='3' y='11'/%3E%3Cuse href='%23s' x='4' y='3'/%3E%3Cuse href='%23s' x='4' y='7'/%3E%3Cuse href='%23s' x='4' y='10'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='c' width='17' height='13' patternUnits='userSpaceOnUse' patternTransform='rotate(72 1000 750) scale(32.3) translate(-969.04 -726.78)'%3E%3Cg fill='%23515664'%3E%3Cuse href='%23s' y='11'/%3E%3Cuse href='%23s' x='2' y='9'/%3E%3Cuse href='%23s' x='5' y='12'/%3E%3Cuse href='%23s' x='9' y='4'/%3E%3Cuse href='%23s' x='12' y='1'/%3E%3Cuse href='%23s' x='16' y='6'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='d' width='19' height='17' patternUnits='userSpaceOnUse' patternTransform='rotate(72 1000 750) scale(32.3) translate(-969.04 -726.78)'%3E%3Cg fill='%23001F3F'%3E%3Cuse href='%23s' y='9'/%3E%3Cuse href='%23s' x='16' y='5'/%3E%3Cuse href='%23s' x='14' y='2'/%3E%3Cuse href='%23s' x='11' y='11'/%3E%3Cuse href='%23s' x='6' y='14'/%3E%3C/g%3E%3Cg fill='%23585d6a'%3E%3Cuse href='%23s' x='3' y='13'/%3E%3Cuse href='%23s' x='9' y='7'/%3E%3Cuse href='%23s' x='13' y='10'/%3E%3Cuse href='%23s' x='15' y='4'/%3E%3Cuse href='%23s' x='18' y='1'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='e' width='47' height='53' patternUnits='userSpaceOnUse' patternTransform='rotate(72 1000 750) scale(32.3) translate(-969.04 -726.78)'%3E%3Cg fill='%23F76300'%3E%3Cuse href='%23s' x='2' y='5'/%3E%3Cuse href='%23s' x='16' y='38'/%3E%3Cuse href='%23s' x='46' y='42'/%3E%3Cuse href='%23s' x='29' y='20'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='f' width='59' height='71' patternUnits='userSpaceOnUse' patternTransform='rotate(72 1000 750) scale(32.3) translate(-969.04 -726.78)'%3E%3Cg fill='%23F76300'%3E%3Cuse href='%23s' x='33' y='13'/%3E%3Cuse href='%23s' x='27' y='54'/%3E%3Cuse href='%23s' x='55' y='55'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='g' width='139' height='97' patternUnits='userSpaceOnUse' patternTransform='rotate(72 1000 750) scale(32.3) translate(-969.04 -726.78)'%3E%3Cg fill='%23F76300'%3E%3Cuse href='%23s' x='11' y='8'/%3E%3Cuse href='%23s' x='51' y='13'/%3E%3Cuse href='%23s' x='17' y='73'/%3E%3Cuse href='%23s' x='99' y='57'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23b)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23h)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23c)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23d)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23e)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23f)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23g)' width='100%25' height='100%25'/%3E%3C/svg%3E");
+background-attachment: fixed;
+background-size: cover; */
         }
 
         .interactive-grid {
@@ -505,8 +524,8 @@
 
         /* Impact Stats */
         .stats-section {
-            background: var(--edusphere-dark);
-            color: var(--text-light);
+            background: var(--card-bg);
+            color: var(--text-dark);
             padding: 80px 0;
             text-align: center;
             position: relative;
@@ -624,7 +643,7 @@
         }
 
         .testimonial-card::before {
-            content: """;
+            content: "";
             font-family: serif;
             font-size: 100px;
             color: var(--edusphere-color);
@@ -632,7 +651,7 @@
             position: absolute;
             top: 20px;
             left: 30px;
-        }
+        } 
 
         .testimonial-avatar {
             width: 60px;
@@ -651,7 +670,7 @@
         .cta-section {
             padding: 100px 0;
             text-align: center;
-            background: var(--edusphere-color);
+            background: var(--edusphere-dark);
             color: var(--text-light);
             position: relative;
             overflow: hidden;
@@ -789,7 +808,7 @@
     <section class="hero">
         <div class="container hero-content">
             <div class="logo-container">
-                <img src="{% static 'assets/logos/Edusphere.svg' %}" alt="Edusphere Logo">
+                <img src="{% static 'logos/Edusphere.svg' %}" style="width: 50%;" alt="Edusphere Logo">
             </div>
             <h1>Experiential Learning for Global Readiness</h1>
             <p>
@@ -907,9 +926,9 @@
     </section>
 
     <!-- ===== OUR SERVICES ===== -->
-    <section class="interactive-grid-section">
+    {% comment %} <section class="interactive-grid-section">
         <div class="container">
-            <h2 class="section-title">
+            <h2 class="section-title" style="color: white;">
                 <span>Our</span> 
                 <span>Programs</span>
             </h2>
@@ -917,7 +936,7 @@
             <div class="interactive-grid">
                 <!-- Service 1 -->
                 <div class="grid-item">
-                    <img src="{% static 'assets/images/learning-beyond.jpg' %}" alt="Learning Beyond School">
+                    <img src="{% static 'images/Edusphere/Learning_beyond_school.jpg' %}" alt="Learning Beyond School">
                     <div class="grid-content">
                         <h3>Learning Beyond School</h3>
                         <p>Enrichment activities outside traditional classrooms that enhance development</p>
@@ -926,7 +945,7 @@
                 
                 <!-- Service 2 -->
                 <div class="grid-item">
-                    <img src="{% static 'assets/images/leadership-conclave.jpg' %}" alt="Leadership Conclave">
+                    <img src="{% static 'images/Edusphere/Leadership_conclave.jpg' %}" alt="Leadership Conclave">
                     <div class="grid-content">
                         <h3>Leadership Conclave</h3>
                         <p>Holistic learning through public speaking, entrepreneurship, and critical thinking</p>
@@ -949,6 +968,75 @@
                         <h3>Empathy Education</h3>
                         <p>Integrating compassion and understanding with real-life scenarios</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section> {% endcomment %}
+
+    <!-- Core Programs Grid -->
+    <section class="programs-section container">
+        <h2 class="section-title">
+            Our <span>Flagship</span> Programs
+        </h2>
+        
+        <div class="card-grid">
+            <!-- Program 1 -->
+            <div class="edu-card">
+                <div class="card-image">
+                    <img src="{% static 'images/Edusphere/Learning_beyond_school.jpg' %}" alt="Learning Beyond School">
+                </div>
+                <div class="card-content">
+                    <span class="card-tag">For All Students</span>
+                    <h3>Learning Beyond School</h3>
+                    <p>Educational experiences outside traditional classrooms including family enrichment and skill-building conferences.</p>
+                    <a href="#">
+                        Explore Program <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Program 2 -->
+            <div class="edu-card">
+                <div class="card-image">
+                    <img src="{% static 'images/Edusphere/Leadership_conclave.jpg' %}" alt="Leadership Program">
+                </div>
+                <div class="card-content">
+                    <span class="card-tag">For Grades 6-12</span>
+                    <h3>Leadership Conclave</h3>
+                    <p>Comprehensive program fostering skills in public speaking, entrepreneurship, and critical thinking.</p>
+                    <a href="#">
+                        Explore Program <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Program 3 -->
+            <div class="edu-card">
+                <div class="card-image">
+                    <img src="{% static 'images/Edusphere/Intrest_based_learning.jpg' %}" alt="Interest Program">
+                </div>
+                <div class="card-content">
+                    <span class="card-tag">For Grades 3-12</span>
+                    <h3>Interest Based Learning</h3>
+                    <p>Year-long immersion in specialized clubs allowing deep expertise development in focused areas.</p>
+                    <a href="#">
+                        Explore Program <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Program 4 -->
+            <div class="edu-card">
+                <div class="card-image">
+                    <img src="{% static 'images/Edusphere/Empathy_education.jpg' %}" alt="Empathy Program">
+                </div>
+                <div class="card-content">
+                    <span class="card-tag">For All Ages</span>
+                    <h3>Empathy Education</h3>
+                    <p>Integrating compassion and understanding into education with real-life scenarios and activities.</p>
+                    <a href="#">
+                        Explore Program <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1001,74 +1089,7 @@
         </div>
     </section>
 
-    <!-- Core Programs Grid -->
-    <section class="programs-section container">
-        <h2 class="section-title">
-            Our <span>Flagship</span> Programs
-        </h2>
-        
-        <div class="card-grid">
-            <!-- Program 1 -->
-            <div class="edu-card">
-                <div class="card-image">
-                    <img src="{% static 'assets/images/beyond-school.jpg' %}" alt="Learning Beyond School">
-                </div>
-                <div class="card-content">
-                    <span class="card-tag">For All Students</span>
-                    <h3>Learning Beyond School</h3>
-                    <p>Educational experiences outside traditional classrooms including family enrichment and skill-building conferences.</p>
-                    <a href="#">
-                        Explore Program <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Program 2 -->
-            <div class="edu-card">
-                <div class="card-image">
-                    <img src="{% static 'assets/images/leadership-program.jpg' %}" alt="Leadership Program">
-                </div>
-                <div class="card-content">
-                    <span class="card-tag">For Grades 6-12</span>
-                    <h3>Leadership Conclave</h3>
-                    <p>Comprehensive program fostering skills in public speaking, entrepreneurship, and critical thinking.</p>
-                    <a href="#">
-                        Explore Program <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Program 3 -->
-            <div class="edu-card">
-                <div class="card-image">
-                    <img src="{% static 'assets/images/interest-program.jpg' %}" alt="Interest Program">
-                </div>
-                <div class="card-content">
-                    <span class="card-tag">For Grades 3-12</span>
-                    <h3>Interest Based Learning</h3>
-                    <p>Year-long immersion in specialized clubs allowing deep expertise development in focused areas.</p>
-                    <a href="#">
-                        Explore Program <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Program 4 -->
-            <div class="edu-card">
-                <div class="card-image">
-                    <img src="{% static 'assets/images/empathy-program.jpg' %}" alt="Empathy Program">
-                </div>
-                <div class="card-content">
-                    <span class="card-tag">For All Ages</span>
-                    <h3>Empathy Education</h3>
-                    <p>Integrating compassion and understanding into education with real-life scenarios and activities.</p>
-                    <a href="#">
-                        Explore Program <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Impact Stats -->
     <section class="stats-section">
@@ -1126,7 +1147,7 @@
                 <img src="assets/images/testimonial-1.jpg" alt="Principal" class="testimonial-avatar">
                 <div style="margin-left: 20px;">
                     <p style="font-weight: 600; margin: 0;">Priya Mehta</p>
-                    <p style="margin: 0; color: var(--edusphere-dark);">Principal, Sunshine Public School</p>
+                    <p style="margin: 0; color: var(--primary-dark); font-weight: 600;">Principal, Sunshine Public School</p>
                 </div>
             </div>
         </div>

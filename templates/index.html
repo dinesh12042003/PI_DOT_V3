@@ -30,7 +30,7 @@
     <header>
         <div class="container">
             <a href="{% url 'index' %}" class="logo" style="float: left; width: 130px; height: 40px;">
-                <img src="{% static "logos/pidot-logo.svg" %}" style="height: 40px;" alt="PI DOT Logo">
+                <img src="{% static "logos/pidot-logo.svg" %}" style="height: 40px;" alt="PI DOT Logo" >
             </a>
             <nav class="navbar">
                 <ul style="float: right;">
@@ -120,7 +120,7 @@
           </div>
         </div>
       
-        <!-- Slide 2 -->
+        {% comment %} Slide 2
         <div class="hero-slide">
          
           <div class="container">
@@ -163,39 +163,39 @@
         <div class="scroll-indicator">
             <span>Scroll</span>
             <div class="arrow-down"></div>
-        </div>
+        </div> {% endcomment %}
 
       </section>
 
     <!-- Trusted By Section -->
     <section class="trusted-by">
         <div class="container">
-            <p>Partners & Supporters</p>
+            <p >Partners & Supporters</p>
             <div class="logo-marquee">
                 <div class="logo-track">
                     <!-- First set of logos (visible) -->
-                    <img src="assets/logos/AIESEC.svg" alt="AIESEC" loading="lazy">
-                    <img src="assets/logos/Rajthali.svg" alt="Rajthali" loading="lazy">
-                    <img src="assets/logos/pidot-logo.svg" alt="PI DOT" loading="lazy">
-                    <img src="assets/logos/thinespo.svg" alt="Thinespo" loading="lazy">
-                    <img src="assets\logos\AG_Hub.png" alt="AG_Hub" loading="lazy">
-                    <img src="assets\logos\THUB-LOGO.png" alt="THUB-LOGO" loading="lazy">
-                    <img src="assets\logos\unschool.webp" alt="unschool" loading="lazy">
-                    <img src="assets\logos\wishwa-logo.png" alt="wishwa-logo" loading="lazy">
-                    <img src="assets/logos/client9.png" alt="Client" loading="lazy">
-                    <img src="assets/logos/client10.png" alt="Client" loading="lazy">
+                    <img src="{% static 'images\clients\AgHub.png'%}" alt="AIESEC" loading="lazy">
+                    <img src="{% static 'images\clients\AISEC.png'%}" alt="Rajthali" loading="lazy">
+                    <img src="{% static 'images\clients\Formi.png'%}" alt="PI DOT" loading="lazy">
+                    <img src="{% static 'images\clients\Bombay Central.png'%}" alt="Thinespo" loading="lazy">
+                    <img src="{% static 'images\clients\chocolat-damour.png'%}" alt="AG_Hub" loading="lazy">
+                    <img src="{% static 'images\clients\Hyderabad Angels.png'%}" alt="THUB-LOGO" loading="lazy">
+                    <img src="{% static 'images\clients\Mru.png'%}" alt="unschool" loading="lazy">
+                    <img src="{% static 'images\clients\NextWave.png'%}" alt="wishwa-logo" loading="lazy">
+                    <img src="{% static 'images\clients\onyx.png'%}" alt="Client" loading="lazy">
+                    <img src="{% static 'images\clients\Rajthali.png'%}" alt="Client" loading="lazy">
                     
                     <!-- Duplicated set for seamless looping -->
-                    <img src="assets/logos/AIESEC.svg" alt="AIESEC" loading="lazy">
-                    <img src="assets/logos/Rajthali.svg" alt="Rajthali" loading="lazy">
-                    <img src="assets/logos/pidot-logo.svg" alt="PI DOT" loading="lazy">
-                    <img src="assets/logos/thinespo.svg" alt="Thinespo" loading="lazy">
-                    <img src="assets/logos/client5.png" alt="Client" loading="lazy">
-                    <img src="assets/logos/client6.png" alt="Client" loading="lazy">
-                    <img src="assets/logos/client7.png" alt="Client" loading="lazy">
-                    <img src="assets/logos/client8.png" alt="Client" loading="lazy">
-                    <img src="assets/logos/client9.png" alt="Client" loading="lazy">
-                    <img src="assets/logos/client10.png" alt="Client" loading="lazy">
+                    <img src="{% static 'images\clients\Recline-and-design.png'%}" alt="AIESEC" loading="lazy">
+                    <img src="{% static 'images\clients\Rotary Club.png'%}" alt="Rajthali" loading="lazy">
+                    <img src="{% static 'images\clients\Solar Bull.png'%}" alt="PI DOT" loading="lazy">
+                    <img src="{% static 'images\clients\St. Martins.png'%}" alt="Thinespo" loading="lazy">
+                    <img src="{% static 'images\clients\Thinespo.png'%}" alt="AG_Hub" loading="lazy">
+                    <img src="{% static 'images\clients\Thub.png'%}" alt="THUB-LOGO" loading="lazy">
+                    <img src="{% static 'images\clients\Unreal-cafe.png'%}" alt="unschool" loading="lazy">
+                    <img src="{% static 'images\clients\Unschool.png'%}" alt="wishwa-logo" loading="lazy">
+                    <img src="{% static 'images\clients\WeHub.png'%}" alt="Client" loading="lazy">
+                    <img src="{% static 'images\clients\Wishwa.png'%}" alt="Client" loading="lazy">
                 </div>
             </div>
         </div>
@@ -212,7 +212,7 @@
             <div class="solutions-grid">
                 <div class="solution-card animate-on-scroll">
                     <div class="solution-icon">
-                        <img src="{% static 'logos\Edusphere.svg' %}" alt="">
+                        <img src="{% static 'logos\Edusphere-icon-black.svg' %}" alt="">
                         <!-- <i class="fas fa-graduation-cap"></i> -->
                     </div>
                     <h3>Edusphere</h3>
@@ -221,7 +221,7 @@
                 </div>
                 <div class="solution-card animate-on-scroll">
                     <div class="solution-icon">
-                        <img src="{% static 'logos\Genesis.svg' %}" alt="">
+                        <img src="{% static 'logos\Genesis-icon-black.svg' %}" alt="">
                         <!-- <i class="fas fa-briefcase"></i> -->
                     </div>
                     <h3>Genesis</h3>
@@ -230,11 +230,11 @@
                 </div>
                 <div class="solution-card animate-on-scroll">
                     <div class="solution-icon">
-                        <img src="{% static 'logos\Axiom.svg' %}" alt="">
+                        <img src="{% static 'logos\Axiom-icon-black.svg' %}" style="width: 70%;">
                         <!-- <i class="fas fa-robot"></i> -->
                     </div>
-                    <h3>Axiom</h3>
-                    <p>Streamlining operations and enhancing efficiency with AI-driven automation and outsourcing solutions.</p>
+                    <h3>AXIOM Creative Studio</h3>
+                    <p> Your full-service creative outsourcing studio, purpose-built to excelerate growth and scale.</p>
                     <a href="axiom.html" class="learn-more">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -244,24 +244,24 @@
     <!-- Stats Section -->
     <section class="stats-section">
         <div class="container" style="text-align: center; color: var(--text-dark);  letter-spacing: 2px;">
-            <!-- <h2>Building  <img src="{% static "logos\PI dot 02.png" %} " style="width: 100px;" > </img>  to scale and be relevant to 314 million indians.</h2> -->
+            <h2>#Mission2030</h2>
 
             <div class="stats-grid">
                 <div class="stat-item animate-on-scroll">
-                    <div class="stat-number" data-count="10">0</div>
-                    <div class="stat-label">Active Clients</div>
+                    <div class="stat-number" data-count="314">0</div>
+                    <div class="stat-label">Million People</div>
                 </div>
                 <div class="stat-item animate-on-scroll">
-                    <div class="stat-number" data-count="314">0</div>
-                    <div class="stat-label">Million Impact</div>
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">Corporate Partners</div>
                 </div>
                 <div class="stat-item animate-on-scroll">
                     <div class="stat-number" data-count="25">0</div>
                     <div class="stat-label">Global Partners</div>
                 </div>
                 <div class="stat-item animate-on-scroll">
-                    <div class="stat-number" data-count="98">0</div>
-                    <div class="stat-label">% Satisfaction</div>
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">Countries</div>
                 </div>
             </div> 
         </div>
@@ -275,6 +275,19 @@
                 <p>Discover how we've helped organizations achieve remarkable results</p>
             </div>
             <div class="case-study-slider">
+                
+                <div class="case-study">
+                    <div class="case-study-image">
+                        <img src="{% static 'images\GenSuccess.jpg' %}" alt="Case Study" loading="lazy">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-category">Corporate Training</span>
+                        <h3>Upskilling Workforce for Tech Giants</h3>
+                        <p>Genesis, designed to reduce onboarding time and resources by over 40% for growing and transforming organizations while improving retention by 53%.</p>
+                        <a href="#" class="read-case-study">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
                 <div class="case-study">
                     <div class="case-study-image">
                         <img src="{% static 'images\EduSuccess.jpg' %}" alt="Case Study" loading="lazy">
@@ -282,21 +295,11 @@
                     <div class="case-study-content">
                         <span class="case-study-category">Education Sector</span>
                         <h3>Transforming Rural Education in India</h3>
-                        <p>How we implemented our Edusphere solution to improve learning outcomes for 50,000 students across 200 schools</p>
+                        <p>Edusphere, designed and built to scale seamlessly across India — reaching learners in Tier 1 to Tier 6 cities, across diverse regions, languages, and financial backgrounds.</p>
                         <a href="#" class="read-case-study">Read Case Study <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="case-study">
-                    <div class="case-study-image">
-                        <img src="{% static 'images\GenSuccess.jpg' %}" alt="Case Study" loading="lazy">
-                    </div>
-                    <div class="case-study-content">
-                        <span class="case-study-category">Corporate Training</span>
-                        <h3>Upskilling Workforce for Tech Giant</h3>
-                        <p>Our Genesis program helped a Fortune 500 company reduce onboarding time by 40% while improving retention</p>
-                        <a href="#" class="read-case-study">Read Case Study <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+                
             </div>
             <div class="slider-controls-2">
                 <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
@@ -304,6 +307,34 @@
             </div>
         </div>
     </section>
+
+    <!-- <section class="milestones">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 style="color: var(--text-light);">Our Mission</h2>
+                <p>Key Goals in our Achievement</p>
+            </div>
+
+            <div class="milestones-grid">
+                <div class="milestone-card animate-on-scroll">
+                    <div class="milestone-number">314M+</div>
+                    <div class="milestone-text">Indians Impact</div>
+                </div>
+                <div class="milestone-card animate-on-scroll">
+                    <div class="milestone-number">150+</div>
+                    <div class="milestone-text">Corporate Partners</div>
+                </div>
+                 <div class="milestone-card animate-on-scroll">
+                    <div class="milestone-number">5K+</div>
+                    <div class="milestone-text">Educational Institutions</div>
+                </div>
+                <div class="milestone-card animate-on-scroll">
+                    <div class="milestone-number">25</div>
+                    <div class="milestone-text">States Reached</div>
+                </div>
+            </div>
+        </div>
+    </section> -->
 
     <!-- Testimonials -->
     <section class="testimonials">
@@ -354,8 +385,8 @@
                 <h2>Ready to Transform Your Organization?</h2>
                 <p>Schedule a consultation with our experts to discover how PI DOT can help you achieve your goals</p>
                 <div class="cta-buttons">
-                    <a href="contact.html" class="cta-button primary">Get Started</a>
-                    <a href="solutions.html" class="cta-button secondary">Learn More</a>
+                    <a href="{% url "contact" %}" class="cta-button primary">Get Started</a>
+                    <a href="{% url "PiDot_about" %}" class="cta-button secondary">Learn More</a>
                 </div>
             </div>
         </div>
@@ -371,7 +402,7 @@
             <div class="insights-grid">
                 <article class="insight-card">
                     <div class="insight-image">
-                        <img src="assets/images/blog1.jpg" alt="Insight" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1698993082050-19ca94c62fb8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Insight" loading="lazy">
                         <span class="insight-category">Education</span>
                     </div>
                     <div class="insight-content">
@@ -385,7 +416,7 @@
                 </article>
                 <article class="insight-card">
                     <div class="insight-image">
-                        <img src="{% static "images/blog2.jpg" %} alt="Insight" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?q=80&w=2125&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Insight" loading="lazy">
                         <span class="insight-category">Automation</span>
                     </div>
                     <div class="insight-content">
@@ -399,7 +430,7 @@
                 </article>
                 <article class="insight-card">
                     <div class="insight-image">
-                        <img src="assets/images/blog3.jpg" alt="Insight" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1734542380880-2ad85bd9be09?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Insight" loading="lazy">
                         <span class="insight-category">Talent</span>
                     </div>
                     <div class="insight-content">
@@ -413,13 +444,13 @@
                 </article>
             </div>
             <div class="view-all">
-                <a href="insights.html" class="view-all-button">View All Insights <i class="fas fa-arrow-right"></i></a>
+                <a href="{% url "PiDot_newsroom" %}" class="view-all-button">View All Insights <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
     <!-- Newsletter -->
-    <section class="newsletter">
+    {% comment %} <section class="newsletter">
         <div class="container">
             <div class="newsletter-content">
                 <div class="newsletter-text">
@@ -431,6 +462,74 @@
                     <button type="submit">Subscribe</button>
                 </form>
             </div>
+        </div>
+    </section> {% endcomment %}
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="animate-on-scroll">Frequently Asked Questions</h2>
+            <div class="faq-container" hidden-faqs>
+                <!-- FAQ Item 1 -->
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        What makes Edusphere different from other educational programs?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Edusphere uniquely blends education, technology, and psychology to create experiential learning programs. Our curriculum is aligned with global standards while being tailored for the Indian context, and we focus on practical, hands-on learning that goes beyond traditional classroom teaching.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        How can my school implement Edusphere programs?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Implementing Edusphere is simple and minimally disruptive to your existing schedule. We work closely with your administration to integrate our programs seamlessly. Our team provides all necessary training for your teachers and ongoing support throughout the implementation process.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        What age groups do you serve?
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer programs for students from kindergarten through 12th grade, with age-appropriate content for each level. Our curriculum is designed to grow with students, building foundational skills early and developing more advanced competencies as they progress.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        How do you ensure program quality?
+                    </div>
+                    <div class="faq-answer">
+                        <p>We maintain rigorous quality standards through continuous teacher training, regular program assessments, and feedback mechanisms with both students and educators. Our curriculum is regularly updated to reflect the latest educational research and global best practices.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        What is your exclusivity policy within a 5km radius?
+                    </div>
+                    <div class="faq-answer">
+                        <p>To ensure our partner schools maintain a competitive advantage, we limit our partnerships to one school within a 5km radius. This policy helps maintain the uniqueness of our programs for your institution and prevents market saturation in your area.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        How do you support students with special learning needs?
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our Empathy Integrated Education program includes specialized support for students with learning differences like dyslexia and dysgraphia. We provide tailored learning approaches, assistive technologies, and teacher training to create an inclusive learning environment for all students.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="see-more-btn animate-on-scroll">See More FAQs</button>
         </div>
     </section>
 
@@ -474,9 +573,9 @@
                 <div class="footer-col">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="insights.html">Insights</a></li>
+                        <li><a href="{% url 'resc_insights'%}">Insights</a></li>
                         <li><a href="case-studies.html">Case Studies</a></li>
-                        <li><a href="whitepapers.html">Whitepapers</a></li>
+                        <li><a href="{% url 'faq'%}">FAQ</a></li>
                         <li><a href="{% url 'resc_login'%}">Pi Portal</a></li>
                     </ul>
                 </div>
